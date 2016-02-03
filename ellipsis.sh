@@ -16,7 +16,7 @@ pkg.link() {
 
 pkg.install(){
     # compile the i3 config file from config.d
-    ~/.i3/config.build
+    ~/.i3/compile.sh
 }
 
 ##############################################################################
@@ -27,7 +27,7 @@ pkg.pull(){
     git.pull
 
     # Update the config file
-    ~/.i3/config.build
+    ~/.i3/compile.sh
 }
 
 ##############################################################################
