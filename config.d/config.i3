@@ -38,10 +38,10 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
 # split in horizontal orientation
-#bindsym $mod+h split h
+bindsym $mod+Shift+minus split v
 
 # split in vertical orientation
-#bindsym $mod+v split v
+bindsym $mod+Shift+backslash split h
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -88,7 +88,7 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+Shift+c exec "~/.i3/compile.sh"; reload
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r exec "$HOME/.i3/compile.sh"; restart
@@ -121,5 +121,10 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
 }
+
+# ALSA audo controls
+bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 1+ unmute"
+bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 1- unmute"
+bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
 
 ##############################################################################
