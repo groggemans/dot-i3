@@ -9,7 +9,7 @@
 
 pkg.link() {
     # Link package into ~/.i3
-    fs.link_file $PKG_PATH
+    fs.link_file "$PKG_PATH"
 }
 
 ##############################################################################
