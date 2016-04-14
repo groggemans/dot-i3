@@ -7,16 +7,21 @@
 # @license MIT
 ##############################################################################
 
-pkg.link() {
-    # Link package into ~/.i3
-    fs.link_file "$PKG_PATH"
+pkg.install(){
+    :
 }
 
 ##############################################################################
 
-pkg.install(){
+pkg.link() {
+    # Link package into ~/.i3
+    fs.link_file "$PKG_PATH"
+
+# ! Temporary fix !
+# This will/must move to the install hook in the future
     # compile the i3 config file from config.d
-    ~/.i3/compile.sh
+    "$PKG_PATH/compile.sh"
+# ! Temporary fix !
 }
 
 ##############################################################################
