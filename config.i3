@@ -1,5 +1,5 @@
 ##############################################################################
-# @file config
+# @file config.ec
 # @date January, 2016
 # @author G. Roggemans <g.roggemans@grog.be>
 # @copyright Copyright (c) GROG [https://grog.be] 2016, All Rights Reserved
@@ -88,10 +88,10 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 # reload the configuration file
-bindsym $mod+Shift+c exec "~/.i3/compile.sh"; reload
+bindsym $mod+Shift+c exec "ellipsis-compiler $HOME/.i3/config.i3 $HOME/.i3/config"; reload
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r exec "$HOME/.i3/compile.sh"; restart
+bindsym $mod+Shift+r exec "ellipsis-compiler $HOME/.i3/config.i3 $HOME/.i3/config"; restart
 
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
@@ -126,5 +126,11 @@ bar {
 bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 1+ unmute"
 bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 1- unmute"
 bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
+
+#->$ if [ -d ~/.fonts ]; then
+    font pango:Ubuntu Mono derivative Powerline Regular 10
+#->$ else
+    font pango:DejaVu Sans Mono 8
+#->$ fi
 
 ##############################################################################

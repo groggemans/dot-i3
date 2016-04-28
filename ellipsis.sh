@@ -8,7 +8,12 @@
 ##############################################################################
 
 pkg.install(){
-    :
+    # Install Ellipsis-Compiler if not already installed
+    if ! utils.cmd_exists ellipsis-compiler; then
+        ellipsis install ellipsis-compiler
+    fi
+
+    ellipsis-compiler "$PKG_PATH/config.i3" "$PKG_PATH/config"
 }
 
 ##############################################################################
@@ -16,23 +21,16 @@ pkg.install(){
 pkg.link() {
     # Link package into ~/.i3
     fs.link_file "$PKG_PATH"
-
-# ! Temporary fix !
-# This will/must move to the install hook in the future
-    # compile the i3 config file from config.d
-    "$PKG_PATH/compile.sh"
-# ! Temporary fix !
 }
 
 ##############################################################################
 
 pkg.pull(){
-
     # Update dot-i3 repo
     git.pull
 
     # Update the config file
-    ~/.i3/compile.sh
+    ellipsis-compiler "$PKG_PATH/config.i3" "$PKG_PATH/config"
 }
 
 ##############################################################################
