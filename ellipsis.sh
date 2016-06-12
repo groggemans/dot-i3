@@ -13,7 +13,7 @@ pkg.install(){
         ellipsis install ellipsis-compiler
     fi
 
-    ellipsis-compiler "$PKG_PATH/config.i3" "$PKG_PATH/config"
+    ellipsis-compiler "$PKG_PATH/config.econf" "$PKG_PATH/config"
 }
 
 ##############################################################################
@@ -30,7 +30,7 @@ pkg.pull(){
     git.pull
 
     # Update the config file
-    ellipsis-compiler "$PKG_PATH/config.i3" "$PKG_PATH/config"
+    ellipsis-compiler "$PKG_PATH/config.econf" "$PKG_PATH/config"
 }
 
 ##############################################################################
