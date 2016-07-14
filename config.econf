@@ -6,7 +6,9 @@
 # @license MIT
 ##############################################################################
 
+#_> include statusbar.econf
 #_> include keybindings.econf
+#_> include hotkeys.econf
 
 #_> if [ -x ~/.screenlayout/default.sh ]
 #_>     > exec --no-startup-id ~/.screenlayout/default.sh
@@ -71,17 +73,6 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-    status_command i3status
-}
-
-# ALSA audo controls
-bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 1+ unmute"
-bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 1- unmute"
-bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
 
 # Font settings
 #_> if [ -f ~/.fonts/ubuntu_mono_derivative_powerline_nerd_font_complete_mono.ttf ]
