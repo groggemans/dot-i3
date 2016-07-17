@@ -1,10 +1,20 @@
 ##############################################################################
-# @file statusbar.econf
+# @file interface.econf
 # @date July, 2016
 # @author G. Roggemans <g.roggemans@grog.be>
 # @copyright Copyright (c) GROG [https://grog.be] 2016, All Rights Reserved
 # @license MIT
 ##############################################################################
+
+# Font settings
+#_> if [ -f ~/.fonts/ubuntu_mono_derivative_powerline_nerd_font_complete_mono.ttf ]
+#_>     > font pango:Ubuntu Mono derivative Powerline Regular 10
+#_> else
+#_>     > font pango:DejaVu Sans Mono 8
+#_> fi
+
+##############################################################################
+# Status bar
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
