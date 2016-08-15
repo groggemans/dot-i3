@@ -9,12 +9,7 @@
 #_> include interface.econf
 #_> include keybindings.econf
 #_> include hotkeys.econf
-
-#_> if [ -x ~/.local/screenlayout/default.sh ]
-#_>     > exec --no-startup-id ~/.local/screenlayout/default.sh
-#_> elif [ -x ~/.screenlayout/default.sh ]
-#_>     > exec --no-startup-id ~/.screenlayout/default.sh
-#_> fi
+#_> include screenlayout.econf
 
 #_> if [ -x ~/.xinitrc ]
 #_>     > exec --no-startup-id ~/.xinitrc

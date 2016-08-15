@@ -146,6 +146,6 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+Return exec i3-sensible-terminal
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+m exec dmenu_run
 
 ##############################################################################
