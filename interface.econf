@@ -22,8 +22,13 @@ bar {
     status_command i3status
 }
 
+#_> if command -v blueman-applet 2>&1 > /dev/null
 exec --no-startup-id blueman-applet
+#_> fi
+
+#_> if command -v nm-applet 2>&1 > /dev/null
 exec --no-startup-id nm-applet
+#_> fi
 
 ##############################################################################
 # window settings
