@@ -143,7 +143,14 @@ bindsym $mod+Shift+space floating toggle
 #bindsym $mod+space focus mode_toggle
 
 # start a terminal
+#_> if command -v gnome-terminal 2>&1 > /dev/null
+bindsym $mod+Return exec gnome-terminal
+#_> else
 bindsym $mod+Return exec i3-sensible-terminal
+#_> fi
+
+# start webbrowser
+bindsym $mod+w exec sensible-browser
 
 # start dmenu (a program launcher)
 bindsym $mod+m exec dmenu_run
