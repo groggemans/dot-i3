@@ -22,4 +22,12 @@ bar {
     status_command i3status
 }
 
+exec --no-startup-id blueman-applet
+exec --no-startup-id nm-applet
+
+##############################################################################
+# window settings
+
+for_window [class="^.*"] border pixel 0
+
 ##############################################################################
