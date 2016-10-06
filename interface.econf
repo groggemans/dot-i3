@@ -13,9 +13,9 @@ default_orientation auto
 
 # Font settings
 #_> if [ -f ~/.fonts/ubuntu_mono_derivative_powerline_nerd_font_complete_mono.ttf ]
-#_>     > font pango:Ubuntu Mono derivative Powerline Regular 10
+#_>     > font pango:Ubuntu Mono derivative Powerline Regular 12
 #_> else
-#_>     > font pango:DejaVu Sans Mono 8
+#_>     > font pango:DejaVu Sans Mono 10
 #_> fi
 
 ##############################################################################
