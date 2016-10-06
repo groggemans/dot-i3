@@ -19,8 +19,10 @@ pkg.install(){
 ##############################################################################
 
 pkg.link() {
-    # Link package into ~/.i3
-    fs.link_file "$PKG_PATH"
+    # Link package into ~/.i3(blocks)
+    mkdir -p "$ELLIPSIS_HOME/.config"
+    fs.link_file "$PKG_PATH" "$ELLIPSIS_HOME/.config/i3"
+    fs.link_file "$PKG_PATH/i3blocks" "$ELLIPSIS_HOME/.config/i3blocks"
 }
 
 ##############################################################################
@@ -31,6 +33,18 @@ pkg.pull(){
 
     # Update the config file
     ellipsis-compiler "$PKG_PATH/config.econf" "$PKG_PATH/config"
+}
+
+##############################################################################
+
+# Unlink package
+pkg.unlink() {
+    # Remove config dir
+    rm "$ELLIPSIS_HOME/.config/i3"
+    rm "$ELLIPSIS_HOME/.config/i3blocks"
+
+    # Remove all links in the home folder
+    hooks.unlink
 }
 
 ##############################################################################

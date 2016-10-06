@@ -13,10 +13,10 @@ set $mod Mod4
 floating_modifier $mod
 
 # recompile and reload the configuration file
-bindsym $mod+Shift+c exec ~/.ellipsis/bin/ellipsis-compiler ~/.i3/config.econf ~/.i3/config; reload
+bindsym $mod+Shift+c exec ~/.ellipsis/bin/ellipsis-compiler ~/.config/i3/config.econf ~/.config/i3/config; reload
 
 # recompile config and restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r exec ~/.ellipsis/bin/ellipsis-compiler ~/.i3/config.econf ~/.i3/config; restart
+bindsym $mod+Shift+r exec ~/.ellipsis/bin/ellipsis-compiler ~/.config/i3/config.econf ~/.config/i3/config; restart
 
 ##############################################################################
 

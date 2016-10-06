@@ -11,11 +11,11 @@ default_orientation auto
 ##############################################################################
 # Fonts
 
-# Font settings
+# Use powerline patched fond if available
 #_> if [ -f ~/.fonts/ubuntu_mono_derivative_powerline_nerd_font_complete_mono.ttf ]
-#_>     > font pango:Ubuntu Mono derivative Powerline Regular 12
+font pango:Ubuntu Mono derivative Powerline Regular 12
 #_> else
-#_>     > font pango:DejaVu Sans Mono 10
+font pango:DejaVu Sans Mono 10
 #_> fi
 
 ##############################################################################
@@ -25,8 +25,14 @@ default_orientation auto
 # finds out, if available)
 bar {
     mode hide
-    status_command i3status
     tray_output primary
+
+    # Use i3blocks if available
+    #_> if command -v i3blocks 2>&1 > /dev/null
+    status_command i3blocks
+    #_> else
+    status_command i3status
+    #_> fi
 }
 
 #_> if command -v blueman-applet 2>&1 > /dev/null
