@@ -7,7 +7,7 @@
 # @license MIT
 ##############################################################################
 
-pkg.dependencies(){
+pkg.install(){
     if [ "$ELLIPSIS_INIT" != '1' ]; then
         log.fail "Unmet dependency 'Ellipsis-init'"
         return 1
@@ -17,12 +17,7 @@ pkg.dependencies(){
     if ! utils.cmd_exists ellipsis-compiler; then
         ellipsis install ellipsis-compiler
     fi
-}
 
-##############################################################################
-
-pkg.install(){
-    pkg.dependencies
     ellipsis-compiler "$PKG_PATH/config.econf" "$PKG_PATH/config"
 }
 
