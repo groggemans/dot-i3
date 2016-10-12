@@ -152,6 +152,11 @@ bindsym $mod+Return exec i3-sensible-terminal
 # start webbrowser
 bindsym $mod+w exec sensible-browser
 
+# start file explorer
+#_> if command -v nautilus 2>&1 > /dev/null
+bindsym $mod+e exec nautilus
+#_> fi
+
 # start dmenu (a program launcher)
 #_> if command -v rofi 2>&1 > /dev/null
 bindsym $mod+m exec rofi -show run -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -width 30 -lines 5 -padding 20 -separator-style none -hide-scrollbar -bw 4 -bc "#111111"
