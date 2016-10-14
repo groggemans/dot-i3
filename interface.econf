@@ -48,4 +48,8 @@ exec --no-startup-id nm-applet
 
 for_window [class="^.*"] border pixel 0
 
+# Show menu bar for rdesktop windows. The menu bar controls the window but
+# prevents windows eating the windows key (aka modifier)
+for_window [class="rdesktop.*"] border normal 2
+
 ##############################################################################
