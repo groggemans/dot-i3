@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 ##############################################################################
 # @file ellipsis.sh
 # @date January, 2016
@@ -7,14 +6,17 @@
 # @license MIT
 ##############################################################################
 
-pkg.install(){
-    if [ "$ELLIPSIS_INIT" != '1' ]; then
-        log.fail "Unmet dependency 'Ellipsis-init'"
-        return 1
-    fi
+# Minimal ellipsis version
+ELLIPSIS_VERSION_DEP='1.9.0'
 
+# Package dependencies (informational/not used!)
+ELLIPSIS_PKG_DEPS='ellipsis/ellipsis-compiler'
+
+##############################################################################
+
+pkg.install(){
     # Install Ellipsis-Compiler if not already installed
-    if ! utils.cmd_exists ellipsis-compiler; then
+    if ! ellipsis.list_packages | grep "$ELLIPSIS_PACKAGES/ellipsis-compiler"; then
         ellipsis install ellipsis-compiler
     fi
 
@@ -42,7 +44,6 @@ pkg.pull(){
 
 ##############################################################################
 
-# Unlink package
 pkg.unlink() {
     # Remove config dir
     rm "$ELLIPSIS_HOME/.config/i3"
@@ -50,6 +51,12 @@ pkg.unlink() {
 
     # Remove all links in the home folder
     hooks.unlink
+}
+
+##############################################################################
+
+pkg.uninstall() {
+    : # No action
 }
 
 ##############################################################################
