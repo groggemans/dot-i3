@@ -16,7 +16,8 @@ ELLIPSIS_PKG_DEPS='ellipsis/ellipsis-compiler'
 
 pkg.install(){
     # Install Ellipsis-Compiler if not already installed
-    if ! ellipsis.list_packages | grep "$ELLIPSIS_PACKAGES/ellipsis-compiler"; then
+    ellipsis.list_packages | grep "$ELLIPSIS_PACKAGES/ellipsis-compiler" 2>&1 > /dev/null
+    if [ $? -ne 0 ]; then
         ellipsis install ellipsis-compiler
     fi
 
