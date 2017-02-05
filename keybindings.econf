@@ -9,9 +9,6 @@
 # set modkey (Alt=Mod1,Windows-key=Mod4)
 set $mod Mod4
 
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
-
 # recompile and reload the configuration file
 bindsym $mod+Shift+c exec ~/.ellipsis/bin/ellipsis-compiler ~/.config/i3/config.econf ~/.config/i3/config; reload
 
