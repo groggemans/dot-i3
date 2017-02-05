@@ -33,6 +33,10 @@ bar {
     #_> else
     status_command i3status
     #_> fi
+
+    # Disable scroll trough workspaces
+    bindsym button4 nop
+    bindsym button5 nop
 }
 
 #_> if command -v blueman-applet 2>&1 > /dev/null
