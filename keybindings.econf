@@ -131,11 +131,6 @@ bindsym $mod+v split v
 # split in vertical orientation
 bindsym $mod+Shift+v split h
 
-# change container layout (stacked, tabbed, toggle split)
-#bindsym $mod+s layout stacking # 's' used for system mode!
-#bindsym $mod+w layout tabbed
-#bindsym $mod+e layout toggle split
-
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
