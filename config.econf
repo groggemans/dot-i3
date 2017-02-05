@@ -6,6 +6,7 @@
 # @license MIT
 ##############################################################################
 
+#_> include colors.econf
 #_> include interface.econf
 #_> include keybindings.econf
 #_> include mousebindings.econf
