@@ -25,6 +25,7 @@ font pango:DejaVu Sans Mono 10
 # finds out, if available)
 bar {
     mode hide
+    position bottom
     tray_output primary
 
     # Use i3blocks if available
@@ -50,7 +51,11 @@ exec --no-startup-id nm-applet
 ##############################################################################
 # window settings
 
+# By default, don't show borders
 for_window [class="^.*"] border pixel 0
+
+# Show small border on floating windows
+for_window [class="^.*" window_type="dialog"] border pixel 1
 
 # Show menu bar for rdesktop windows. The menu bar controls the window but
 # prevents windows eating the windows key (aka modifier)
