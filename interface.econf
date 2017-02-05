@@ -51,11 +51,11 @@ exec --no-startup-id nm-applet
 ##############################################################################
 # window settings
 
-# By default, don't show borders
-for_window [class="^.*"] border pixel 0
+# Hide edge borders
+hide_edge_borders both
 
-# Show small border on floating windows
-for_window [class="^.*" window_type="dialog"] border pixel 1
+# Use one pixel border
+for_window [class="^.*"] border pixel 1
 
 # Show menu bar for rdesktop windows. The menu bar controls the window but
 # prevents windows eating the windows key (aka modifier)
