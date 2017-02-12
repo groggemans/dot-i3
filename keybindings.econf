@@ -156,4 +156,9 @@ bindsym $mod+m exec rofi -show run -fg "#505050" -bg "#000000" -hlfg "#ffb964" -
 bindsym $mod+m exec dmenu_run
 #_> fi
 
+# Reload xinit config
+#_> if [ -x $HOME/.xinitrc ]; then
+bindsym $mod+x exec --no-startup-id $HOME/.xinitrc
+#_> fi
+
 ##############################################################################
