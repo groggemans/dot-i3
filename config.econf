@@ -6,6 +6,12 @@
 # @license MIT
 ##############################################################################
 
+#_> if [ -x ~/.xinitrc ]; then
+#_>     > exec --no-startup-id ~/.xinitrc
+#_> fi
+
+##############################################################################
+
 #_> include colors.econf
 #_> include interface.econf
 #_> include keybindings.econf
