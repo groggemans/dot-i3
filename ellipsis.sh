@@ -7,7 +7,7 @@
 ##############################################################################
 
 # Minimal ellipsis version
-ELLIPSIS_VERSION_DEP='1.9.0'
+ELLIPSIS_VERSION_DEP='1.9.4'
 
 # Package dependencies (informational/not used!)
 ELLIPSIS_PKG_DEPS='ellipsis/ellipsis-compiler'
@@ -35,12 +35,17 @@ pkg.link() {
 
 ##############################################################################
 
-pkg.pull(){
-    # Update dot-i3 repo
-    git.pull
+pkg.pull() {
+    # Use improved update strategy
+    git remote update 2>&1 > /dev/null
+    if git.is_behind; then
+        pkg.unlink
+        git.pull
+        pkg.link
 
-    # Update the config file
-    ellipsis-compiler "$PKG_PATH/config.econf" "$PKG_PATH/config"
+        # Update the config file
+        ellipsis-compiler "$PKG_PATH/config.econf" "$PKG_PATH/config"
+    fi
 }
 
 ##############################################################################
