@@ -40,12 +40,11 @@ bar {
     bindsym button5 nop
 }
 
-#_> if command -v blueman-applet 2>&1 > /dev/null
-exec --no-startup-id blueman-applet
-#_> fi
-
-#_> if command -v nm-applet 2>&1 > /dev/null
-exec --no-startup-id nm-applet
+# Try to use dex to handle .desktop files else start the essentials "manualy"
+#_> if command -v dex 2>&1 > /dev/null
+exec --no-startup-id dex -ae i3
+#_> else
+#_> include custom_startup.econf
 #_> fi
 
 ##############################################################################

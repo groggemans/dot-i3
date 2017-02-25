@@ -1,0 +1,17 @@
+##############################################################################
+# @file custom_startup.econf
+# @date February, 2017
+# @author G. Roggemans <g.roggemans@grog.be>
+# @copyright Copyright (c) GROG [https://grog.be] 2016, All Rights Reserved
+# @license MIT
+##############################################################################
+
+#_> if command -v blueman-applet 2>&1 > /dev/null
+exec --no-startup-id blueman-applet
+#_> fi
+
+#_> if command -v nm-applet 2>&1 > /dev/null
+exec --no-startup-id nm-applet
+#_> fi
+
+##############################################################################
