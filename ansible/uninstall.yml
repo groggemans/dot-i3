@@ -1,0 +1,14 @@
+# Uninstall playbook
+---
+- hosts: all
+  vars:
+    ansible_connection: local
+  tasks:
+    - name: "Include vars"
+      include_vars: vars.yml
+    - name: "Uninstall packages"
+      package:
+        name: "{{ item }}"
+        state: absent
+      become: yes
+      with_items: "{{ packages }}"

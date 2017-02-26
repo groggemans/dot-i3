@@ -22,6 +22,12 @@ pkg.install(){
     fi
 
     ellipsis-compiler "$PKG_PATH/config.econf" "$PKG_PATH/config"
+
+    # Install packages with ansible (if available)
+    if utils.cmd_exists 'ansible-playbook' &&
+        utils.prompt 'Install i3 packages? (y/n) :' 'no'; then
+        (cd ansible; ansible-playbook -K install.yml)
+    fi
 }
 
 ##############################################################################
@@ -62,7 +68,11 @@ pkg.unlink() {
 ##############################################################################
 
 pkg.uninstall() {
-    : # No action
+    # Uninstall packages with ansible (if available)
+    if utils.cmd_exists 'ansible-playbook' &&
+        utils.prompt 'Uninstall i3 packages? (y/n) :' 'no'; then
+        (cd ansible; ansible-playbook -K uninstall.yml)
+    fi
 }
 
 ##############################################################################

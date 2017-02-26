@@ -1,0 +1,14 @@
+# Install playbook
+---
+- hosts: all
+  vars:
+    ansible_connection: local
+  tasks:
+    - name: "Include vars"
+      include_vars: vars.yml
+    - name: "Install packages"
+      package:
+        name: "{{ item }}"
+        state: present
+      become: yes
+      with_items: "{{ packages }}"
