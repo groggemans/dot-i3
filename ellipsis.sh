@@ -15,12 +15,16 @@ ELLIPSIS_PKG_DEPS='ellipsis/ellipsis-compiler'
 ##############################################################################
 
 pkg.install(){
+    # Create wallpapers directory
+    mkdir -p "$PKG_PATH/wallpaper"
+
     # Install Ellipsis-Compiler if not already installed
     ellipsis.list_packages | grep "$ELLIPSIS_PACKAGES/ellipsis-compiler" 2>&1 > /dev/null
     if [ $? -ne 0 ]; then
         ellipsis install ellipsis-compiler
     fi
 
+    # Compile config
     ellipsis-compiler "$PKG_PATH/config.econf" "$PKG_PATH/config"
 
     # Install packages with ansible (if available)
@@ -37,6 +41,21 @@ pkg.link() {
     mkdir -p "$ELLIPSIS_HOME/.config"
     fs.link_file "$PKG_PATH" "$ELLIPSIS_HOME/.config/i3"
     fs.link_file "$PKG_PATH/i3blocks" "$ELLIPSIS_HOME/.config/i3blocks"
+    fs.link_file "$PKG_PATH/wallpaper" "$ELLIPSIS_HOME/.config/wallpaper"
+
+    # Auto link active wallpapers
+    if [ -d ~/Pictures/wallpapers/active ]; then
+        fs.link_file ~/Pictures/wallpapers/active "$ELLIPSIS_HOME/.config/wallpaper/Pwall_active"
+    fi
+    if [ -d ~/pictures/wallpapers/active ]; then
+        fs.link_file ~/pictures/wallpapers/active "$ELLIPSIS_HOME/.config/wallpaper/pwall_active"
+    fi
+    if [ -d ~/Images/wallpapers/active ]; then
+        fs.link_file ~/Images/wallpapers/active "$ELLIPSIS_HOME/.config/wallpaper/Iwall_active"
+    fi
+    if [ -d ~/images/wallpapers/active ]; then
+        fs.link_file ~/images/wallpapers/active "$ELLIPSIS_HOME/.config/wallpaper/iwall_active"
+    fi
 }
 
 ##############################################################################
@@ -60,6 +79,7 @@ pkg.unlink() {
     # Remove config dir
     rm "$ELLIPSIS_HOME/.config/i3"
     rm "$ELLIPSIS_HOME/.config/i3blocks"
+    rm "$ELLIPSIS_HOME/.config/wallpaper"
 
     # Remove all links in the home folder
     hooks.unlink

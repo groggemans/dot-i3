@@ -48,6 +48,13 @@ exec --no-startup-id dex -ae i3
 #_> fi
 
 ##############################################################################
+# wallpaper settings
+
+#_> if command -v feh 2>&1 > /dev/null
+exec_always --no-startup-id feh --no-fehbg --recursive --randomize --bg-max ~/.config/wallpaper
+#_> fi
+
+##############################################################################
 # window settings
 
 # Hide edge borders
