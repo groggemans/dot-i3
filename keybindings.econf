@@ -120,6 +120,27 @@ mode "$mode_system" {
 bindsym $mod+s mode "$mode_system"
 
 ##############################################################################
+# Music mode
+
+set $mode_music Music
+
+mode "$mode_music" {
+
+    #_> if command -v mpc 2>&1 > /dev/null
+    bindsym p exec --no-startup-id mpc pause; mode "default"
+    bindsym j exec --no-startup-id mpc next
+    bindsym k exec --no-startup-id mpc prev
+    bindsym s exec --no-startup-id mpc stop; mode "default"
+    #_> fi
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+m mode "$mode_music"
+
+##############################################################################
 # Needs clean-up
 
 # split in horizontal orientation
@@ -151,9 +172,9 @@ bindsym $mod+e exec nautilus
 
 # start dmenu (a program launcher)
 #_> if command -v rofi 2>&1 > /dev/null
-bindsym $mod+m exec rofi -show run -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -width 30 -lines 5 -padding 20 -separator-style none -hide-scrollbar -bw 4 -bc "#111111"
+bindsym $mod+semicolon exec rofi -show run -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -width 30 -lines 5 -padding 20 -separator-style none -hide-scrollbar -bw 4 -bc "#111111"
 #_> else
-bindsym $mod+m exec dmenu_run
+bindsym $mod+semicolon exec dmenu_run
 #_> fi
 
 # Reload xinit config
