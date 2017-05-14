@@ -38,6 +38,18 @@ bar {
     # Disable scroll trough workspaces
     bindsym button4 nop
     bindsym button5 nop
+
+    colors {
+        background #111111
+        statusline #ffffff
+        separator #666666
+
+        focused_workspace  #a0a000 #a0a000 #ffffff
+        active_workspace   #285577 #285577 #ffffff
+        inactive_workspace #333333 #333333 #888888
+        urgent_workspace   #f09000 #f09000 #ffffff
+        binding_mode       #d13030 #d13030 #ffffff
+    }
 }
 
 # Try to use dex to handle .desktop files else start the essentials "manualy"
