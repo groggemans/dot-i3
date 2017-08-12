@@ -164,6 +164,38 @@ mode "$mode_music" {
 bindsym $mod+m mode "$mode_music"
 
 ##############################################################################
+# Control mode
+
+set $mode_control Control
+
+mode "$mode_control" {
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+c mode "$mode_control"
+
+##############################################################################
+# Input mode
+
+set $mode_input Input
+
+mode "$mode_input" {
+
+    #_> if command -v xdotool 2>&1 > /dev/null
+    bindsym c exec --no-startup-id xdotool key Caps_Lock; mode "default"
+    #_> fi
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+i mode "$mode_input"
+
+##############################################################################
 # Needs clean-up
 
 # split in horizontal orientation
