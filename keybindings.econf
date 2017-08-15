@@ -22,6 +22,9 @@ bindsym $mod+Shift+q kill
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
+#_> if command -v xdotool 2>&1 > /dev/null
+bindsym --release $mod+Shift+f exec --no-startup-id xdotool key --clearmodifiers F11
+#_> fi
 
 # change focus
 bindsym $mod+h focus left
