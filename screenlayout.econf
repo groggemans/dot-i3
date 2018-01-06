@@ -34,8 +34,10 @@ mode "$mode_screenlayout" {
     bindsym k move workspace to output up; mode "default"
     bindsym l move workspace to output left; mode "default"
 
-    # backlight (night, medium and day mode)
-    bindsym n exec --no-startup-id xbacklight -set 1; mode "default"
+    # backlight
+    bindsym q exec --no-startup-id xbacklight -set 0; mode "default"
+    bindsym o exec --no-startup-id xbacklight -set 1; mode "default"
+    bindsym n exec --no-startup-id xbacklight -set 10; mode "default"
     bindsym m exec --no-startup-id xbacklight -set 50; mode "default"
     bindsym d exec --no-startup-id xbacklight -set 100; mode "default"
 
