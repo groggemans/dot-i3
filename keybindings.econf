@@ -129,7 +129,7 @@ bindsym $mod+r mode "$mode_resize"
 set $mode_system System
 
 mode "$mode_system" {
-    set $Locker ~/.config/i3/i3lock/lock.sh && sleep 1
+    set $Locker i3lock -u -i ~/.config/i3/i3lock/lock_dark.png
 
     bindsym l exec --no-startup-id $Locker; mode "default"
     bindsym e exec --no-startup-id i3-msg exit; mode "default"
