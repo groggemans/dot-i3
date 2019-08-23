@@ -242,4 +242,8 @@ bindsym $mod+semicolon exec dmenu_run
 bindsym $mod+x exec --no-startup-id $HOME/.xinitrc
 #_> fi
 
+#_> if command -v flameshot 2>&1 > /dev/null
+bindsym Print exec flameshot gui
+#_> fi
+
 ##############################################################################
