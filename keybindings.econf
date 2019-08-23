@@ -154,8 +154,8 @@ mode "$mode_music" {
 
     bindsym p exec "playerctl --player=spotify,vlc play-pause"; mode "default"
     bindsym s exec "playerctl --player=spotify,vlc stop"; mode "default"
-    bindsym l exec "playerctl --player=spotify,vlc next"
-    bindsym h exec "playerctl --player=spotify,vlc previous"
+    bindsym l exec "playerctl --player=spotify,vlc next";
+    bindsym h exec "playerctl --player=spotify,vlc previous";
 
     bindsym k exec --no-startup-id pactl set-sink-volume 0 +5%
     bindsym j exec --no-startup-id pactl set-sink-volume 0 -5%
