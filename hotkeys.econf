@@ -16,9 +16,9 @@ bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5 # increase sc
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5 # decrease screen brightness
 
 # Media player controls
-bindsym XF86AudioPlay exec playerctl play
-bindsym XF86AudioPause exec playerctl pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec "playerctl --player=spotify,vlc play"
+bindsym XF86AudioPause exec "playerctl --player=spotify,vlc pause"
+bindsym XF86AudioNext exec "playerctl --player=spotify,vlc next"
+bindsym XF86AudioPrev exec "playerctl --player=spotify,vlc previous"
 
 ##############################################################################
