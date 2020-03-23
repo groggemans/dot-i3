@@ -154,8 +154,8 @@ mode "$mode_music" {
 
     bindsym p exec "playerctl --player=spotify,vlc play-pause"; mode "default"
     bindsym s exec "playerctl --player=spotify,vlc stop"; mode "default"
-    bindsym l exec "playerctl --player=spotify,vlc next";
-    bindsym h exec "playerctl --player=spotify,vlc previous";
+    bindsym l exec "playerctl --player=spotify,vlc next"; mode "default"
+    bindsym h exec "playerctl --player=spotify,vlc previous"; mode "default"
 
     bindsym k exec --no-startup-id pactl set-sink-volume 0 +5%
     bindsym j exec --no-startup-id pactl set-sink-volume 0 -5%
@@ -230,9 +230,12 @@ bindsym $mod+w exec sensible-browser
 bindsym $mod+e exec nautilus
 #_> fi
 
+
+bindsym $mod+y exec my_menu
+
 # start dmenu (a program launcher)
 #_> if command -v rofi 2>&1 > /dev/null
-bindsym $mod+semicolon exec rofi -show run -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -width 30 -lines 5 -padding 20 -separator-style none -hide-scrollbar -bw 4 -bc "#111111"
+bindsym $mod+semicolon exec rofi -show run
 #_> else
 bindsym $mod+semicolon exec dmenu_run
 #_> fi
