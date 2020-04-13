@@ -6,6 +6,13 @@
 # @license MIT
 ##############################################################################
 
+#_> if command -v feh 2>&1 > /dev/null
+set $background_command --no-startup-id feh --no-fehbg --recursive --randomize --bg-max ~/.config/wallpaper
+exec_always $background_command
+#_> fi
+
+##############################################################################
+
 set $mode_screenlayout Screen layout
 
 mode "$mode_screenlayout" {
@@ -40,6 +47,9 @@ mode "$mode_screenlayout" {
     bindsym n exec --no-startup-id xbacklight -set 10; mode "default"
     bindsym m exec --no-startup-id xbacklight -set 50; mode "default"
     bindsym d exec --no-startup-id xbacklight -set 100; mode "default"
+
+    # wallpaper
+    bindsym b exec $background_command
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"

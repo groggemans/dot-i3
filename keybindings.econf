@@ -201,6 +201,48 @@ mode "$mode_input" {
 bindsym $mod+i mode "$mode_input"
 
 ##############################################################################
+# Bluetooth mode
+
+set $mode_bluetooth Bluetooth
+
+mode "$mode_bluetooth" {
+
+#_> if [ -d ~/.local/devices]
+    set $device_dir ~/.local/devices
+#_> else
+    set $device_dir ~/.devices
+#_> fi
+
+    #_> if command -v bluetoothctl 2>&1 > /dev/null
+    bindsym 1 exec --no-startup-id bluetoothctl connect $(cat $device_dir/blt1*); mode "default"
+    bindsym F1 exec --no-startup-id bluetoothctl disconnect $(cat $device_dir/blt1*); mode "default"
+    bindsym 2 exec --no-startup-id bluetoothctl connect $(cat $device_dir/blt2*); mode "default"
+    bindsym F2 exec --no-startup-id bluetoothctl disconnect $(cat $device_dir/blt2*); mode "default"
+    bindsym 3 exec --no-startup-id bluetoothctl connect $(cat $device_dir/blt3*); mode "default"
+    bindsym F3 exec --no-startup-id bluetoothctl disconnect $(cat $device_dir/blt3*); mode "default"
+    bindsym 4 exec --no-startup-id bluetoothctl connect $(cat $device_dir/blt4*); mode "default"
+    bindsym F4 exec --no-startup-id bluetoothctl disconnect $(cat $device_dir/blt4*); mode "default"
+    bindsym 5 exec --no-startup-id bluetoothctl connect $(cat $device_dir/blt5*); mode "default"
+    bindsym F5 exec --no-startup-id bluetoothctl disconnect $(cat $device_dir/blt5*); mode "default"
+    bindsym 6 exec --no-startup-id bluetoothctl connect $(cat $device_dir/blt6*); mode "default"
+    bindsym F6 exec --no-startup-id bluetoothctl disconnect $(cat $device_dir/blt6*); mode "default"
+    bindsym 7 exec --no-startup-id bluetoothctl connect $(cat $device_dir/blt7*); mode "default"
+    bindsym F7 exec --no-startup-id bluetoothctl disconnect $(cat $device_dir/blt7*); mode "default"
+    bindsym 8 exec --no-startup-id bluetoothctl connect $(cat $device_dir/blt8*); mode "default"
+    bindsym F8 exec --no-startup-id bluetoothctl disconnect $(cat $device_dir/blt8*); mode "default"
+    bindsym 9 exec --no-startup-id bluetoothctl connect $(cat $device_dir/blt9*); mode "default"
+    bindsym F9 exec --no-startup-id bluetoothctl disconnect $(cat $device_dir/blt9*); mode "default"
+    bindsym F10 exec --no-startup-id bluetoothctl disconnect; mode "default"
+    #_> fi
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+b mode "$mode_bluetooth"
+
+##############################################################################
 # Needs clean-up
 
 # split in horizontal orientation
