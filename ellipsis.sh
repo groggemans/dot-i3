@@ -10,22 +10,13 @@
 ELLIPSIS_VERSION_DEP='1.9.4'
 
 # Package dependencies (informational/not used!)
-ELLIPSIS_PKG_DEPS='ellipsis/ellipsis-compiler'
+ELLIPSIS_PKG_DEPS=''
 
 ##############################################################################
 
 pkg.install(){
     # Create wallpapers directory
     mkdir -p "$PKG_PATH/wallpaper"
-
-    # Install Ellipsis-Compiler if not already installed
-    ellipsis.list_packages | grep "$ELLIPSIS_PACKAGES/ellipsis-compiler" 2>&1 > /dev/null
-    if [ $? -ne 0 ]; then
-        ellipsis install ellipsis-compiler
-    fi
-
-    # Compile config
-    ellipsis-compiler "$PKG_PATH/config.econf" "$PKG_PATH/config"
 
     # Install packages with ansible (if available)
     if utils.cmd_exists 'ansible-playbook' &&
@@ -67,9 +58,6 @@ pkg.pull() {
         pkg.unlink
         git.pull
         pkg.link
-
-        # Update the config file
-        ellipsis-compiler "$PKG_PATH/config.econf" "$PKG_PATH/config"
     fi
 }
 

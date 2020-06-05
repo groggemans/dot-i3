@@ -1,19 +1,108 @@
 ##############################################################################
-# @file keybindings.econf
-# @date July, 2016
+# @file config (i3)
+# @date August, 2016
 # @author G. Roggemans <g.roggemans@grog.be>
 # @copyright Copyright (c) GROG [https://grog.be] 2016, All Rights Reserved
 # @license MIT
+###############################################################################
+
+# Run xinitrc
+exec --no-startup-id ~/.xinitrc
+
+# Use dex to handle .desktop files
+exec --no-startup-id dex -ae i3
+
+###############################################################################
+
+default_orientation auto
+
+##############################################################################
+# Fonts
+
+font pango:Ubuntu Mono derivative Powerline Regular 12
+
+##############################################################################
+# class                 border  backgr. text    indicator child_border
+client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+client.background       #ffffff
+
+##############################################################################
+# Status bar
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+    mode hide
+    position bottom
+    tray_output primary
+
+    # Use i3blocks
+    status_command i3blocks
+
+    # Disable scroll trough workspaces
+    bindsym button4 nop
+    bindsym button5 nop
+
+    colors {
+        background #111111
+        statusline #ffffff
+        separator #666666
+
+        focused_workspace  #a0a000 #a0a000 #ffffff
+        active_workspace   #285577 #285577 #ffffff
+        inactive_workspace #333333 #333333 #888888
+        urgent_workspace   #f09000 #f09000 #ffffff
+        binding_mode       #d13030 #d13030 #ffffff
+    }
+}
+
+##############################################################################
+# window settings
+
+# Hide edge borders
+hide_edge_borders both
+
+# Use one pixel border
+for_window [class="^.*"] border pixel 1
+
+# Show menu bar for rdesktop windows. The menu bar controls the window but
+# prevents windows eating the windows key (aka modifier)
+for_window [class="rdesktop.*"] border normal 2
+
+##############################################################################
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5 # decrease screen brightness
+
+# Media player controls
+bindsym XF86AudioPlay exec "playerctl --player=spotify,vlc play"
+bindsym XF86AudioPause exec "playerctl --player=spotify,vlc pause"
+bindsym XF86AudioNext exec "playerctl --player=spotify,vlc next"
+bindsym XF86AudioPrev exec "playerctl --player=spotify,vlc previous"
+
 ##############################################################################
 
 # set modkey (Alt=Mod1,Windows-key=Mod4)
 set $mod Mod4
 
 # recompile and reload the configuration file
-bindsym $mod+Shift+c exec ~/.ellipsis/bin/ellipsis-compiler ~/.config/i3/config.econf ~/.config/i3/config; reload
+#bindsym $mod+Shift+c exec ~/.ellipsis/bin/ellipsis-compiler ~/.config/i3/config.econf ~/.config/i3/config; reload
+bindsym $mod+Shif+c reload
 
 # recompile config and restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r exec ~/.ellipsis/bin/ellipsis-compiler ~/.config/i3/config.econf ~/.config/i3/config; restart
+#bindsym $mod+Shift+r exec ~/.ellipsis/bin/ellipsis-compiler ~/.config/i3/config.econf ~/.config/i3/config; restart
+bindsym $mod+Shift+r restart
 
 ##############################################################################
 
@@ -22,9 +111,7 @@ bindsym $mod+Shift+q kill
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
-#_> if command -v xdotool 2>&1 > /dev/null
 bindsym --release $mod+Shift+f exec --no-startup-id xdotool key --clearmodifiers F11
-#_> fi
 
 # change focus
 bindsym $mod+h focus left
@@ -161,9 +248,7 @@ mode "$mode_music" {
     bindsym j exec --no-startup-id pactl set-sink-volume 0 -5%
     bindsym m exec --no-startup-id pactl set-sink-mute 0 toggle; mode "default"
 
-    #_> if command -v pavucontrol 2>&1 > /dev/null
     bindsym c exec pavucontrol; mode "default"
-    #_> fi
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -193,9 +278,7 @@ set $mode_input Input
 
 mode "$mode_input" {
 
-    #_> if command -v xdotool 2>&1 > /dev/null
     bindsym c exec --no-startup-id xdotool key Caps_Lock; mode "default"
-    #_> fi
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -211,13 +294,8 @@ set $mode_bluetooth Bluetooth
 
 mode "$mode_bluetooth" {
 
-#_> if [ -d ~/.local/devices]
     set $device_dir ~/.local/devices
-#_> else
-    set $device_dir ~/.devices
-#_> fi
 
-    #_> if command -v bluetoothctl 2>&1 > /dev/null
     bindsym 1 exec --no-startup-id bluetoothctl connect $(cat $device_dir/blt1*); mode "default"
     bindsym F1 exec --no-startup-id bluetoothctl disconnect $(cat $device_dir/blt1*); mode "default"
     bindsym 2 exec --no-startup-id bluetoothctl connect $(cat $device_dir/blt2*); mode "default"
@@ -237,11 +315,8 @@ mode "$mode_bluetooth" {
     bindsym 9 exec --no-startup-id bluetoothctl connect $(cat $device_dir/blt9*); mode "default"
     bindsym F9 exec --no-startup-id bluetoothctl disconnect $(cat $device_dir/blt9*); mode "default"
     bindsym F10 exec --no-startup-id bluetoothctl disconnect; mode "default"
-    #_> fi
 
-    #_> if command -v blueman-manager 2>&1 > /dev/null
     bindsym m exec blueman-manager; mode "default"
-    #_> fi
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -266,37 +341,75 @@ bindsym $mod+Shift+space floating toggle
 #bindsym $mod+space focus mode_toggle
 
 # start a terminal
-#_> if command -v gnome-terminal 2>&1 > /dev/null
 bindsym $mod+Return exec gnome-terminal
-#_> else
-bindsym $mod+Return exec i3-sensible-terminal
-#_> fi
 
 # start webbrowser
 bindsym $mod+w exec sensible-browser
 
 # start file explorer
-#_> if command -v nautilus 2>&1 > /dev/null
 bindsym $mod+e exec nautilus
-#_> fi
-
 
 bindsym $mod+y exec my_menu
 
-# start dmenu (a program launcher)
-#_> if command -v rofi 2>&1 > /dev/null
+# start the program launcher
 bindsym $mod+semicolon exec rofi -show run
-#_> else
-bindsym $mod+semicolon exec dmenu_run
-#_> fi
 
 # Reload xinit config
-#_> if [ -x $HOME/.xinitrc ]; then
 bindsym $mod+x exec --no-startup-id $HOME/.xinitrc
-#_> fi
 
-#_> if command -v flameshot 2>&1 > /dev/null
 bindsym Print exec flameshot gui
-#_> fi
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
 
 ##############################################################################
+
+set $background_command --no-startup-id feh --no-fehbg --recursive --randomize --bg-max ~/.config/wallpaper
+exec_always $background_command
+
+##############################################################################
+
+set $mode_screenlayout Screen layout
+
+mode "$mode_screenlayout" {
+
+    set $layout_dir ~/.local/screenlayout
+
+    bindsym 0 exec --no-startup-id $layout_dir/default.sh; mode "default"
+    bindsym 1 exec --no-startup-id $layout_dir/1*.sh; mode "default"
+    bindsym r exec --no-startup-id $layout_dir/r*.sh; mode "default"
+    bindsym 2 exec --no-startup-id $layout_dir/2*.sh; mode "default"
+    bindsym 3 exec --no-startup-id $layout_dir/3*.sh; mode "default"
+    bindsym 4 exec --no-startup-id $layout_dir/4*.sh; mode "default"
+    bindsym 5 exec --no-startup-id $layout_dir/5*.sh; mode "default"
+    bindsym 6 exec --no-startup-id $layout_dir/6*.sh; mode "default"
+    bindsym 7 exec --no-startup-id $layout_dir/7*.sh; mode "default"
+    bindsym 8 exec --no-startup-id $layout_dir/8*.sh; mode "default"
+    bindsym 9 exec --no-startup-id $layout_dir/9*.sh; mode "default"
+
+    # move workspace to output
+    bindsym h move workspace to output right; mode "default"
+    bindsym j move workspace to output down; mode "default"
+    bindsym k move workspace to output up; mode "default"
+    bindsym l move workspace to output left; mode "default"
+
+    # backlight
+    bindsym q exec --no-startup-id xbacklight -set 0; mode "default"
+    bindsym o exec --no-startup-id xbacklight -set 1; mode "default"
+    bindsym n exec --no-startup-id xbacklight -set 10; mode "default"
+    bindsym m exec --no-startup-id xbacklight -set 50; mode "default"
+    bindsym d exec --no-startup-id xbacklight -set 100; mode "default"
+
+    # wallpaper
+    bindsym b exec $background_command
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+d mode "$mode_screenlayout"
+
+exec --no-startup-id ~/.local/screenlayout/default.sh
+
+###############################################################################
