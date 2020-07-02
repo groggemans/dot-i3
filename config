@@ -73,6 +73,7 @@ for_window [class="^.*"] border pixel 1
 # Show menu bar for rdesktop windows. The menu bar controls the window but
 # prevents windows eating the windows key (aka modifier)
 for_window [class="rdesktop.*"] border normal 2
+for_window [class="wfica.*"] border normal 2
 
 ##############################################################################
 
