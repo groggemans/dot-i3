@@ -245,9 +245,9 @@ mode "$mode_music" {
     bindsym l exec "playerctl --player=spotify,vlc next"; mode "default"
     bindsym h exec "playerctl --player=spotify,vlc previous"; mode "default"
 
-    bindsym k exec --no-startup-id pactl set-sink-volume 0 +5%
-    bindsym j exec --no-startup-id pactl set-sink-volume 0 -5%
-    bindsym m exec --no-startup-id pactl set-sink-mute 0 toggle; mode "default"
+    bindsym k exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+    bindsym j exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+    bindsym m exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle; mode "default"
 
     bindsym c exec pavucontrol; mode "default"
 
