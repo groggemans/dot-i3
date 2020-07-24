@@ -73,7 +73,7 @@ for_window [class="^.*"] border pixel 1
 # Show menu bar for rdesktop windows. The menu bar controls the window but
 # prevents windows eating the windows key (aka modifier)
 for_window [class="rdesktop.*"] border normal 2
-for_window [class="wfica.*"] border normal 2
+#for_window [class="Wfica.*"] move to workspace 5, exec "sh -c 'sleep 3; i3-msg \[class=Wfica.*\] fullscreen disable'"
 
 ##############################################################################
 
@@ -83,8 +83,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #d
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5 # increase screen brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id sudo light -A 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id sudo light -U 5 # decrease screen brightness
 
 # Media player controls
 bindsym XF86AudioPlay exec "playerctl --player=spotify,vlc play"
@@ -99,11 +99,11 @@ set $mod Mod4
 
 # recompile and reload the configuration file
 #bindsym $mod+Shift+c exec ~/.ellipsis/bin/ellipsis-compiler ~/.config/i3/config.econf ~/.config/i3/config; reload
-bindsym $mod+Shif+c reload
+#bindsym $mod+Shif+c reload
 
 # recompile config and restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 #bindsym $mod+Shift+r exec ~/.ellipsis/bin/ellipsis-compiler ~/.config/i3/config.econf ~/.config/i3/config; restart
-bindsym $mod+Shift+r restart
+bindsym $mod+Shift+r reload; restart
 
 ##############################################################################
 
@@ -395,11 +395,11 @@ mode "$mode_screenlayout" {
     bindsym l move workspace to output left; mode "default"
 
     # backlight
-    bindsym q exec --no-startup-id xbacklight -set 0; mode "default"
-    bindsym o exec --no-startup-id xbacklight -set 1; mode "default"
-    bindsym n exec --no-startup-id xbacklight -set 10; mode "default"
-    bindsym m exec --no-startup-id xbacklight -set 50; mode "default"
-    bindsym d exec --no-startup-id xbacklight -set 100; mode "default"
+    bindsym q exec --no-startup-id sudo light -S 0; mode "default"
+    bindsym o exec --no-startup-id sudo light -S 0.2; mode "default"
+    bindsym n exec --no-startup-id sudo light -S 10; mode "default"
+    bindsym m exec --no-startup-id sudo light -S 50; mode "default"
+    bindsym d exec --no-startup-id sudo light -S 100; mode "default"
 
     # wallpaper
     bindsym b exec $background_command
