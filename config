@@ -12,6 +12,9 @@ exec --no-startup-id ~/.xinitrc
 # Use dex to handle .desktop files
 exec --no-startup-id dex -ae i3
 
+# Start redshift app
+exec --no-startup-id redshift-gtk
+
 ###############################################################################
 
 default_orientation auto
