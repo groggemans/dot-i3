@@ -33,6 +33,7 @@ pkg.link() {
     fs.link_file "$PKG_PATH" "$ELLIPSIS_HOME/.config/i3"
     fs.link_file "$PKG_PATH/i3blocks" "$ELLIPSIS_HOME/.config/i3blocks"
     fs.link_file "$PKG_PATH/wallpaper" "$ELLIPSIS_HOME/.config/wallpaper"
+    fs.link_file "$PKG_PATH/redshift.conf" "$ELLIPSIS_HOME/.config/redshift.conf"
 
     # Auto link active wallpapers
     if [ -d ~/Pictures/wallpapers/active ]; then
@@ -68,6 +69,7 @@ pkg.unlink() {
     rm "$ELLIPSIS_HOME/.config/i3"
     rm "$ELLIPSIS_HOME/.config/i3blocks"
     rm "$ELLIPSIS_HOME/.config/wallpaper"
+    rm "$ELLIPSIS_HOME/.config/redshift.conf"
 
     # Remove all links in the home folder
     hooks.unlink
