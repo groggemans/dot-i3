@@ -366,6 +366,9 @@ bindsym Print exec flameshot gui
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# Start origin windows in floating mode
+for_window [class="steam_app_1182480" title="Origin"] floating enable
+
 ##############################################################################
 
 set $background_command --no-startup-id feh --no-fehbg --recursive --randomize --bg-max ~/.config/wallpaper
