@@ -397,10 +397,10 @@ mode "$mode_screenlayout" {
     bindsym 9 exec --no-startup-id $layout_dir/9*.sh; mode "default"
 
     # move workspace to output
-    bindsym h move workspace to output right; mode "default"
+    bindsym h move workspace to output left; mode "default"
     bindsym j move workspace to output down; mode "default"
     bindsym k move workspace to output up; mode "default"
-    bindsym l move workspace to output left; mode "default"
+    bindsym l move workspace to output right; mode "default"
 
     # backlight
     bindsym q exec --no-startup-id sudo light -S 0; mode "default"
